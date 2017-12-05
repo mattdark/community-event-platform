@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+   <head>
+       <title>Community Event Platform</title>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="{{ url_for('static',filename='css/uikit.min.css') }}" />
+       <script src="{{ url_for('static',filename='js/uikit.min.js') }}"></script>
+       <script src="{{ url_for('static',filename='js/uikit-icons.min.js') }}"></script>
+   </head>
+   <body>
+       <div class="uk-container uk-container-expand">
+           <form action = "./certificate" method = post>
+               <fieldset class="uk-fieldset">
+                   <legend class="uk-legend">Certificates</legend>
+                   <div>
+                       {% if not selected %}
+                           <div class="uk-text-success uk-text-small">No option checked</div>
+                       {% endif %}
+                       
+                       {% for i,n in data %}
+                           <input type="checkbox" class="uk-checkbox" id="speaker_{{i}}" name="speakers" value="{{i}}">
+                           <label class="uk-form-label" for="id_{{n}}">{{n}}</label><br>
+                       {% endfor %}
+                       <br>
+                       {{ form.hidden_tag() }}
+                       {{ form.submit(class_="uk-button uk-button-default") }}
+                   </div>
+               </fieldset>
+           </form>
+       </div>
+   </body>
+</html>

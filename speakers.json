@@ -1,0 +1,16 @@
+{
+    "speakers": [
+        {
+            "id": "1",
+            "mail": "iscmariog@gmail.com",
+            "name": "Mario Alberto García Mejía",
+            "org": "Mozilla México"
+        },
+        {
+            "id": "2",
+            "mail": "mattdark@mozilla-mexico.org",
+            "name": "Mario García",
+            "org": "Mozilla México"
+        }
+    ]
+}

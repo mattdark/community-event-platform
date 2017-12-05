@@ -1,0 +1,55 @@
+
+<!doctype html>
+<html>
+   <head>
+       <title>Community Event Platform</title>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="{{ url_for('static',filename='css/uikit.min.css') }}" />
+       <script src="{{ url_for('static',filename='js/uikit.min.js') }}"></script>
+       <script src="{{ url_for('static',filename='js/uikit-icons.min.js') }}"></script>
+   </head>
+   <body>
+       <div class="uk-container uk-container-expand">
+           <fieldset class="uk-fieldset">
+               <legend class="uk-legend">Invitations</legend>
+               <div>
+
+                   <table class="uk-table uk-table-striped">
+                       <thead>
+                           <tr>
+                               <th>Name</th>
+                               <th>File</th>
+                               <th>Email</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           {% for nl,fnl in data %}
+                               <tr>
+                                   <td>{{nl}}</td>
+                                   <td><a class="uk-button uk-button-default" href="{{ url_for('static',filename='invitations/%s' % fnl) }}" target="_blank">Download</a></td>
+                                   <td>
+                                       <form action='./mail' method = post>
+                                           <div>
+                                               {% if not selected %}
+                                                   <div class="uk-text-danger uk-text-small">No option checked</div>
+                                               {% endif %}
+                                               {% if emailsent %}
+                                                   <div class="uk-text-success uk-text-small">Email sent</div>
+                                               {% endif %}
+                                               <input type="checkbox" class="uk-checkbox" name="file_name" value="{{fnl}}">
+                                           </div>
+                                   </td>
+                               </tr>
+                           {% endfor %}
+                           <tr>
+                               <td colspan="3">{{ form.submit(class_="uk-button uk-button-default") }}</form></td>
+                           </tr>
+                       </tbody>
+                   </table>
+
+               </div>
+           </fieldset>
+       </div>
+   </body>
+</html>

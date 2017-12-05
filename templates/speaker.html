@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+   <head>
+       <title>Community Event Platform</title>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="{{ url_for('static',filename='css/uikit.min.css') }}" />
+       <script src="{{ url_for('static',filename='js/uikit.min.js') }}"></script>
+       <script src="{{ url_for('static',filename='js/uikit-icons.min.js') }}"></script>
+   </head>
+   <body>
+       <div class="uk-container uk-container-expand">
+           <ul uk-tab uk-switcher>
+               <li class="uk-active"><a href="#">Add</a></li>
+               <li><a href="#">Search</a></li>
+           </ul>
+	   <ul class="uk-switcher uk-margin">
+	       <li>
+                   <form action = "./speaker" method = post>
+                       <fieldset class="uk-fieldset">
+                           <legend class="uk-legend">Speakers</legend>
+            
+                           <div>
+                               {% if submission_successful %}
+                                   <div class="uk-text-success uk-text-small">Speaker added</div>
+                               {% endif %}
+                               {{ form.name.label(class_="uk-form-label") }}<br>
+                               {{ form.name(class_="uk-input") }}
+                               <br>
+                               {% for message in form.name.errors %}
+                                   <div class="uk-text-danger uk-text-small">{{ message }}</div>
+                               {% endfor %}
+
+                               {{ form.org.label(class_="uk-form-label") }}<br>
+                               {{ form.org(class_="uk-input") }}
+                               <br>
+                               {% for message in form.org.errors %}
+                                   <div class="uk-text-danger uk-text-small">{{ message }}</div>
+                               {% endfor %}
+                              
+                               {{ form.email.label(class_="uk-form-label") }}<br>
+                               {{ form.email(class_="uk-input") }}
+                               <br>
+                               {% for message in form.email.errors %}
+                                   <div class="uk-text-danger uk-text-small">{{ message }}</div>
+                               {% endfor %}
+                               <br>
+                               {{ form.hidden_tag() }}
+                               {{ form.submit(class_="uk-button uk-button-default") }}
+                           </div>
+                       </fieldset>
+                   </form>
+               </li>
+               <li>
+                   HOLA
+               </li>
+       </div>
+      
+   </body>
+</html>
