@@ -1,2 +1,2 @@
-fromaddr = "iscmariog@gmail.com"
-password = "ftyojinovhimcazc"
+fromaddr = "EMAIL"
+password = "PASSWORD"
